@@ -12,8 +12,7 @@ public interface Foodservices {
      List<Food> get();
      Food getByid(String id);
      String deleted(String id);
-     String post(MultipartFile file);
      String put(Food food,String id);
-     String uploadFile(MultipartFile file, String category,String name,  String description, String price);
+     String uploadFile(MultipartFile file, String category,String name,  String description, String price,Integer stock);
 
 }

@@ -53,10 +53,7 @@ public class FoodServicesImp implements Foodservices{
 
     }
 
-    @Override
-    public String post(MultipartFile file) {
-      return null;
-    }
+
 
     @Override
     public String put(Food food, String id) {
@@ -72,12 +69,13 @@ public class FoodServicesImp implements Foodservices{
     }
     private final String UPLOAD_DIR = "src/main/resources/picture";
     @Override
-    public String  uploadFile(MultipartFile file,String category,String name,  String description, String price) {
+    public String  uploadFile(MultipartFile file,String category,String name,  String description, String price,Integer stock) {
         Food food = new Food();
         food.setCategory(category);
         food.setName(name);
         food.setDescription(description);
         food.setPrice(Integer.valueOf(price));
+        food.setStock(stock);
         try {
             String fileName = UUID.randomUUID().toString();
             byte[] bytes = file.getBytes();
