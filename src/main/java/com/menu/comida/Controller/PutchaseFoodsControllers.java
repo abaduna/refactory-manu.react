@@ -24,9 +24,9 @@ public class PutchaseFoodsControllers {
     public List<Ordenes> get(){
         return purchaseService.get();
     }
-    @GetMapping("api/allordenes/{id}")
-    public List<All_ordenes> get(@PathVariable Long id_order){
-        return purchaseService.getAllOrdenes(id_order);
+    @GetMapping("api/allordenes/{id_order}")
+    public List<All_ordenes> get(@PathVariable String id_order){
+        return purchaseService.getAllOrdenes(Long.valueOf(id_order));
     }
     @DeleteMapping("api/ordenes/{id}")
     public String removeCustomers(@PathVariable String id){
