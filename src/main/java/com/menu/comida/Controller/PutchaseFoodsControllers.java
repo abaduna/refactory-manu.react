@@ -2,6 +2,7 @@ package com.menu.comida.Controller;
 
 
 import com.menu.comida.DTO.PutchaseDTO;
+import com.menu.comida.models.All_ordenes;
 import com.menu.comida.models.Food;
 import com.menu.comida.models.Ordenes;
 import com.menu.comida.services.PurchaseService;
@@ -23,7 +24,10 @@ public class PutchaseFoodsControllers {
     public List<Ordenes> get(){
         return purchaseService.get();
     }
-
+    @GetMapping("api/allordenes/{id}")
+    public List<All_ordenes> get(@PathVariable Long id_order){
+        return purchaseService.getAllOrdenes(id_order);
+    }
     @DeleteMapping("api/ordenes/{id}")
     public String removeCustomers(@PathVariable String id){
         return purchaseService.deleted(id);

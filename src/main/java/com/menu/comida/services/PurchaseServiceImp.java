@@ -29,6 +29,10 @@ public class PurchaseServiceImp implements PurchaseService{
         return purchaseRepository.findAll();
     }
 
+    @Override
+    public List<All_ordenes> getAllOrdenes(Long id_order) {
+        return all_ordenesRepository.getAllOrdenes(id_order);
+    }
 
 
     @Override
