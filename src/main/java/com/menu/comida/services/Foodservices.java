@@ -14,5 +14,5 @@ public interface Foodservices {
      String deleted(String id);
      String put(Food food,String id);
      String uploadFile(MultipartFile file, String category,String name,  String description, String price,Integer stock);
-
+     String updateStock(String id,Integer stock);
 }

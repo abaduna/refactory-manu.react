@@ -105,5 +105,20 @@ public class FoodServicesImp implements Foodservices{
         }
     }
 
+    @Override
+    public String updateStock(String id,Integer stock) {
+        try {
+            Optional<Food> food = repository.findById(Long.parseLong(id));
+            if (food.isPresent()) {
+                food.get().setStock(stock);
+                repository.save(food.get());
+                return "update sucefully";
+            }
+            return "error";
+        } catch (Exception e) {
+            System.out.println(e);
+            return "error";
+        }
+    }
 
 }
