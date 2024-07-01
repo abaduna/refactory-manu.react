@@ -4,7 +4,6 @@ import com.menu.comida.models.All_ordenes;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -26,4 +25,10 @@ public class PutchaseDTO {
     private String dateTime;
 
     private List<All_ordenes> ordenes;
+
+    @Data
+    public static class ReqLogin {
+        private String email;
+        private String password;
+    }
 }

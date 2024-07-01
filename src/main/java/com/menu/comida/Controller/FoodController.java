@@ -28,6 +28,7 @@ public class FoodController {
        return foodservices.get();
     }
     @GetMapping("api/food/{id}")
+
     public Food get(@PathVariable String id){
         return foodservices.getByid(id);
     }
@@ -41,7 +42,10 @@ public class FoodController {
        return foodservices.put(food,id);
     }
     @PostMapping("/api/food")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,@RequestParam("category") String category,@RequestParam("name") String name,@RequestParam("description") String description,@RequestParam("price") String price,@RequestParam("stock") Integer stock) throws IOException {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file,@RequestParam("category") String category,
+                                   @RequestParam("name") String name,@RequestParam("description") String description,
+                                   @RequestParam("price") String price,@RequestParam("stock") Integer stock)
+            throws IOException {
        return foodservices.uploadFile(file,category, name,description,price,stock);
     }
 
