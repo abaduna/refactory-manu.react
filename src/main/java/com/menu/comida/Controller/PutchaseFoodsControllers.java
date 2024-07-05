@@ -24,6 +24,21 @@ public class PutchaseFoodsControllers {
     public List<Ordenes> get(){
         return purchaseService.get();
     }
+    @PostMapping("api/ordenes/aceptados/{id_order}")
+    public String postAceptado(@PathVariable String id_order)  {
+        return purchaseService.postAceptados(Long.valueOf(id_order));
+    }
+    @GetMapping("api/ordenes/aceptados")
+    public List<Ordenes> getAceptados(){
+        return purchaseService.getAceptados();
+    }
+
+    @GetMapping("api/pruba")
+    public Long gepreubat(){
+        return purchaseService.prueva();
+    }
+
+
     @GetMapping("api/allordenes/{id_order}")
     public List<All_ordenes> get(@PathVariable String id_order){
         return purchaseService.getAllOrdenes(Long.valueOf(id_order));
@@ -39,7 +54,7 @@ public class PutchaseFoodsControllers {
     }
     @PostMapping("/api/ordenes")
     public String handleFileUpload(@RequestBody PutchaseDTO ordenes)  {
-        System.out.println("putController " + ordenes.getDateTime());
+        System.out.println( ordenes);
         return purchaseService.post(ordenes);
     }
 

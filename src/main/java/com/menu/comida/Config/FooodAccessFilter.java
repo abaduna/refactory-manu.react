@@ -23,8 +23,8 @@ public class FooodAccessFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         boolean authorized = isAuthorized(request);
-        System.out.println(request);
-        System.out.println(authorized);
+        System.out.println("req" +request);
+        System.out.println("authorized " +authorized);
         if (authorized) {
             SecurityContextHolder.getContext().setAuthentication(
                     new UsernamePasswordAuthenticationToken(null, null, Collections.emptyList()));

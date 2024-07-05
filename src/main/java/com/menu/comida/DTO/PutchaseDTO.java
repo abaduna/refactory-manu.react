@@ -7,7 +7,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-
 public class PutchaseDTO {
 
     @Id
@@ -26,9 +25,6 @@ public class PutchaseDTO {
 
     private List<All_ordenes> ordenes;
 
-    @Data
-    public static class ReqLogin {
-        private String email;
-        private String password;
-    }
+    private String estados;
+
 }

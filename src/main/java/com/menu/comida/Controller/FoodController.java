@@ -27,10 +27,10 @@ public class FoodController {
     public List<Food> get(){
        return foodservices.get();
     }
-    @GetMapping("api/food/{id}")
 
-    public Food get(@PathVariable String id){
-        return foodservices.getByid(id);
+    @GetMapping("api/food/serch/{serch}")
+    public List<Food> get(@PathVariable String serch){
+        return foodservices.getSerch(serch);
     }
     @DeleteMapping("api/food/{id}")
     public String removeCustomers(@PathVariable String id){

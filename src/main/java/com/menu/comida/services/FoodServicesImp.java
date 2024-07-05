@@ -121,4 +121,9 @@ public class FoodServicesImp implements Foodservices{
         }
     }
 
+    @Override
+    public List<Food> getSerch(String serch) {
+        return repository.findByName(serch);
+    }
+
 }

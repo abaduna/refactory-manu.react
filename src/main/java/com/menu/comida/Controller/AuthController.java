@@ -2,6 +2,7 @@ package com.menu.comida.Controller;
 
 
 import com.menu.comida.DTO.PutchaseDTO;
+import com.menu.comida.DTO.ReqLogin;
 import com.menu.comida.Utils.JDTutils;
 import com.menu.comida.models.User;
 import com.menu.comida.services.AuthService;
@@ -16,12 +17,12 @@ public class AuthController {
     @Autowired
     AuthService authService;
     @PostMapping("/auth/login")
-    public String login(@RequestBody PutchaseDTO.ReqLogin req) {
+    public String login(@RequestBody ReqLogin.ReqLoginv2 req) {
         User user =   authService.login(req.getEmail(),req.getPassword());
         return JDTutils.generateToken(user);
     }
     @PostMapping("/auth/Create")
-    public String updateLogin(@RequestBody PutchaseDTO.ReqLogin req) {
+    public String updateLogin(@RequestBody ReqLogin.ReqLoginv2 req) {
         return authService.updateLogin(req.getEmail(),req.getPassword());
 
     }

@@ -3,7 +3,7 @@ package com.menu.comida.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+
 
 @Data
 @Entity
@@ -25,4 +25,8 @@ public class Ordenes {
 
     @Column(name ="date")
     private String dateTime;
+
+
+    @Column(name ="estado")
+    private String estados;
 }

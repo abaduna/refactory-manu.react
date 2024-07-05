@@ -12,5 +12,7 @@ public interface PurchaseService {
     String deleted(String id);
     String put(PutchaseDTO ordenes, Long id_orden);
     String post(PutchaseDTO ordenes);
-
+    List<Ordenes> getAceptados();
+    String postAceptados(Long id_order);
+    Long prueva();
 }

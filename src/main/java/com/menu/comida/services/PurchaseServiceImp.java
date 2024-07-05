@@ -26,7 +26,29 @@ public class PurchaseServiceImp implements PurchaseService{
     @Override
     public List<Ordenes> get() {
 
-        return purchaseRepository.findAll();
+        return purchaseRepository.findByestadoPedidos();
+    }
+    public List<Ordenes> getAceptados() {
+
+        return purchaseRepository.findByestadoAceptados();
+    }
+
+    @Override
+    public String postAceptados(Long id_order) {
+        try{
+
+            Ordenes ordness =  purchaseRepository.findByidOrden(id_order);
+
+            ordness.setId_orden(id_order);
+            ordness.setEstados("aceptado");
+
+            purchaseRepository.save(ordness);
+            return "successfully postAceptados";
+        }catch (Exception e){
+            System.out.println(e);
+            return "error";
+        }
+
     }
 
     @Override
@@ -71,20 +93,26 @@ public class PurchaseServiceImp implements PurchaseService{
             return "Error";
         }
     }
-
+    @Override
+    public Long prueva(){
+       return purchaseRepository.getid();
+    }
     @Override
     public String post(PutchaseDTO ordenes) {
         try {
             Ordenes ord1 = new Ordenes();
             ord1.setDateTime(ordenes.getDateTime());
-            long id_orden = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+          long id_orden = purchaseRepository.getid() + 1;
             ord1.setId_orden(id_orden);
             ord1.setTableNumber(ordenes.getTable());
+            ord1.setEstados(ordenes.getEstados());
             ordenes.getOrdenes().forEach(orden -> {
                 All_ordenes all_ordenes = new All_ordenes();
                 all_ordenes.setProduct(orden.getProduct());
                 all_ordenes.setId_orden(id_orden);
+                System.out.println("getId_orden "+all_ordenes.getId_orden());
                 all_ordenes.setPrice(orden.getPrice());
+                System.out.println(all_ordenes);
                 all_ordenesRepository.save(all_ordenes);
 
             });
@@ -93,7 +121,9 @@ public class PurchaseServiceImp implements PurchaseService{
 
         }catch (Exception e){
             System.out.println(e);
-            return "Error";
+            return "Error " + e;
         }
     }
+
+
 }
