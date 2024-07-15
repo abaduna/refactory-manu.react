@@ -15,4 +15,5 @@ public interface PurchaseService {
     List<Ordenes> getAceptados();
     String postAceptados(Long id_order);
     Long prueva();
+    List<Ordenes> getAceptadosSerch(String serch);
 }

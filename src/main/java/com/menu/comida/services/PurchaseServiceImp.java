@@ -97,11 +97,19 @@ public class PurchaseServiceImp implements PurchaseService{
     public Long prueva(){
        return purchaseRepository.getid();
     }
+
+    @Override
+    public List<Ordenes> getAceptadosSerch(String serch) {
+        String date =  serch;
+        return purchaseRepository.findByidDate(date);
+    }
+
     @Override
     public String post(PutchaseDTO ordenes) {
         try {
             Ordenes ord1 = new Ordenes();
             ord1.setDateTime(ordenes.getDateTime());
+            ord1.setPhone(ordenes.getPhone());
           long id_orden = purchaseRepository.getid() + 1;
             ord1.setId_orden(id_orden);
             ord1.setTableNumber(ordenes.getTable());

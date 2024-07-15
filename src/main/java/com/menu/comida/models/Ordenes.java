@@ -29,4 +29,7 @@ public class Ordenes {
 
     @Column(name ="estado")
     private String estados;
+
+    @Column(name ="phone")
+    private Integer phone;
 }

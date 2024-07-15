@@ -21,4 +21,7 @@ public interface PurchaseRepository extends JpaRepository<Ordenes, Long> {
 
     @Query("SELECT c FROM Ordenes c WHERE c.id_orden = :id_orden")
     Ordenes findByidOrden(@Param("id_orden") long id_orden);
+
+    @Query("SELECT c FROM Ordenes c WHERE c.dateTime LIKE :serch% AND c.estados = 'aceptado'")
+    List<Ordenes> findByidDate(@Param("serch") String serch);
 }

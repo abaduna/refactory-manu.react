@@ -27,4 +27,6 @@ public class PutchaseDTO {
 
     private String estados;
 
+    private  Integer phone;
+
 }

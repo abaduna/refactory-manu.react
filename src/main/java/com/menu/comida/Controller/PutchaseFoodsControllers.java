@@ -33,6 +33,13 @@ public class PutchaseFoodsControllers {
         return purchaseService.getAceptados();
     }
 
+    @GetMapping("api/ordenes/aceptados/serch/{serch}")
+    public List<Ordenes> getAceptados(@PathVariable String serch){
+
+
+        return purchaseService.getAceptadosSerch(serch);
+    }
+
     @GetMapping("api/pruba")
     public Long gepreubat(){
         return purchaseService.prueva();
