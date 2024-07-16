@@ -61,8 +61,8 @@ public class PutchaseFoodsControllers {
     }
     @PostMapping("/api/ordenes")
     public String handleFileUpload(@RequestBody PutchaseDTO ordenes)  {
-        System.out.println( ordenes);
-        return purchaseService.post(ordenes);
+
+        return purchaseService.postOrdenes(ordenes);
     }
 
 }

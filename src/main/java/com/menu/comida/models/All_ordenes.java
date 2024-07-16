@@ -17,8 +17,8 @@ public class All_ordenes {
     @Column(name ="id_orden")
     private  long id_orden;
 
-    @Column(name ="product")
-    private  String product;
+    @Column(name ="name")
+    private  String name;
 
     @Column(name ="price")
     private  String price;

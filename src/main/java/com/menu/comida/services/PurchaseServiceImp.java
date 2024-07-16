@@ -79,7 +79,7 @@ public class PurchaseServiceImp implements PurchaseService{
             ord1.setTableNumber(ordenes.getTable());
             ordenes.getOrdenes().forEach(orden -> {
                 All_ordenes all_ordenes = new All_ordenes();
-                all_ordenes.setProduct(orden.getProduct());
+                all_ordenes.setName(orden.getName());
                 all_ordenes.setId_orden(id_orden);
                 all_ordenes.setPrice(orden.getPrice());
                 all_ordenesRepository.save(all_ordenes);
@@ -116,7 +116,37 @@ public class PurchaseServiceImp implements PurchaseService{
             ord1.setEstados(ordenes.getEstados());
             ordenes.getOrdenes().forEach(orden -> {
                 All_ordenes all_ordenes = new All_ordenes();
-                all_ordenes.setProduct(orden.getProduct());
+                all_ordenes.setName(orden.getName());
+                all_ordenes.setId_orden(id_orden);
+                System.out.println("getId_orden "+all_ordenes.getId_orden());
+                all_ordenes.setPrice(orden.getPrice());
+                System.out.println(all_ordenes);
+                all_ordenesRepository.save(all_ordenes);
+
+            });
+            purchaseRepository.save(ord1);
+            return "Successfully post";
+
+        }catch (Exception e){
+            System.out.println(e);
+            return "Error " + e;
+        }
+    }
+
+    @Override
+    public String postOrdenes(PutchaseDTO ordenes) {
+        try {
+            Ordenes ord1 = new Ordenes();
+            ord1.setDateTime(ordenes.getDateTime());
+            ord1.setPhone(ordenes.getPhone());
+            long id_orden = purchaseRepository.getid() + 1;
+            ord1.setId_orden(id_orden);
+            ord1.setTableNumber(ordenes.getTable());
+            ord1.setEstados(ordenes.getEstados());
+            ordenes.getOrdenes().forEach(orden -> {
+                System.out.println(orden);
+                All_ordenes all_ordenes = new All_ordenes();
+                all_ordenes.setName(orden.getName());
                 all_ordenes.setId_orden(id_orden);
                 System.out.println("getId_orden "+all_ordenes.getId_orden());
                 all_ordenes.setPrice(orden.getPrice());
