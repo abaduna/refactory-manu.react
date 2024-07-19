@@ -31,5 +31,7 @@ public class Ordenes {
     private String estados;
 
     @Column(name ="phone")
-    private Integer phone;
+    private Long phone;
+    @Column(name ="address")
+    private String address;
 }

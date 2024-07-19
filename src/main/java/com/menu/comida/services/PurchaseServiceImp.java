@@ -9,9 +9,8 @@ import com.menu.comida.models.Ordenes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
-import java.util.UUID;
 
 
 @SpringBootApplication
@@ -143,6 +142,7 @@ public class PurchaseServiceImp implements PurchaseService{
             ord1.setId_orden(id_orden);
             ord1.setTableNumber(ordenes.getTable());
             ord1.setEstados(ordenes.getEstados());
+            ord1.setAddress(ordenes.getAddress());
             ordenes.getOrdenes().forEach(orden -> {
                 System.out.println(orden);
                 All_ordenes all_ordenes = new All_ordenes();
