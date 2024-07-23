@@ -1,27 +1,23 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import "../styles/Navbar.css"
-import { Link } from 'react-router-dom';
-function Navbarv2() {
-  return (
-    <Navbar>
-    <Container className='navbarvdos'>
-      <Navbar.Brand >Menu</Navbar.Brand>
-      <Navbar.Toggle/>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
 
-          {/* <Nav.Link ><Link to="/admin">Admin</Link></Nav.Link>
-          <Nav.Link ><Link to="/admin/ordens">Realizar pedido</Link></Nav.Link>
-          <Nav.Link ><Link to="/admin/pedidos">Pedidos</Link></Nav.Link>
-          <Nav.Link ><Link to="/admin/pedidos/aceptados">Historial</Link></Nav.Link>
-          <Nav.Link ><Link to="/admin/pedidos/aceptados/grafico">Grafico</Link></Nav.Link> */}
-        </Nav>
-      </Navbar.Collapse>
-    </Container>
-  </Navbar>
-  )
+import { useState } from "react";
+import "../styles/Navbar.css";
+
+function Navbarv2() {
+
+
+  return (
+    <nav>
+  <ul>
+      <li><a href="/">Menu</a></li>
+      <li><a href="/admin">Admin</a></li>
+      <li><a href="/admin/ordens"></a></li>
+      <li><a href="/admin/aceptados/graficos">Graficos</a></li>
+      <li><a href="/admin/ordens">Ordenes</a></li>
+      <li><a href="/admin/pedidos">Pedidos</a></li>
+      <li><a href="/admin/pedidos/aceptados">Aceptados</a></li>
+      </ul>
+      </nav>
+  );
 }
 
-export default Navbarv2
+export default Navbarv2;

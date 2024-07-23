@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 import { Menu } from "./../types/types";
@@ -7,9 +6,8 @@ import { Suspense } from "react";
 import ComponetCarrito from "../componets/ComponetCarrito";
 import { useFetch } from "../hock/useFetch";
 import ComponetFood from "../componets/ComponetFood";
-import "../styles/Home.css"
-
-
+import "../styles/Home.css";
+import NavbarLogin from "../componets/NavbarLogin";
 
 function App() {
   const [serch, setSerch] = useState<string>("");
@@ -38,8 +36,7 @@ function App() {
     getDataFoods();
   }, [endpoint]);
 
-  
-  console.log('carrito', carrito)
+  console.log("carrito", carrito);
 
   const handleSerchClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,21 +52,18 @@ function App() {
       } else {
         console.log(`undefind`);
       }
-     
     };
     sendCategory();
   }, []);
-  const removeProduct=(product:Menu)=>{
-    
+  const removeProduct = (product: Menu) => {
     setCarrito((prev: Menu[]) =>
       prev.filter((item: Menu) => item.name !== product.name)
     );
-  }
-  
+  };
+
   return (
     <div>
-     
-
+      <NavbarLogin />
       <form className="formContainerSerch" onSubmit={handleSerchClick}>
         <input
           placeholder="buscar"
@@ -83,7 +77,7 @@ function App() {
           </button>
         </div>
       </form>
-     
+
       <ComponetCarrito carrito={carrito} />
       {show ? (
         <>
@@ -94,8 +88,6 @@ function App() {
                   <ComponetFood
                     setCarrito={setCarrito}
                     removeProduct={removeProduct}
-                 
-                    
                     {...food}
                   ></ComponetFood>
                 </Suspense>
@@ -104,7 +96,6 @@ function App() {
         </>
       ) : (
         <>
-
           {/* <p className={styles.categoryBottle}>Botellas</p> */}
           <div className="fooditem">
             {bottle.length > 0 &&
@@ -113,17 +104,15 @@ function App() {
                   <ComponetFood
                     setCarrito={setCarrito}
                     removeProduct={removeProduct}
-
                     {...food}
                   ></ComponetFood>
                 </Suspense>
               ))}
           </div>
-          
         </>
       )}
     </div>
   );
 }
 
-export default App
+export default App;

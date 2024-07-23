@@ -1,1 +1,2 @@
 poner un cancelar en home
+agregar un nombre para los pedidos

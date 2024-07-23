@@ -4,10 +4,10 @@ import RoutesPrincial from "./router/router";
 
 function App() {
  
-  
+  const token = localStorage.getItem("token")
   return (
     <div>
-      <Navbarv2/>
+     {token &&<Navbarv2/>} 
       <RoutesPrincial/>
     </div>
       

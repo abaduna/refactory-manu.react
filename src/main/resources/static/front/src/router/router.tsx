@@ -19,9 +19,9 @@ import Graficos from "../page/Graficos";
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/admin" element={<Admin/>}/>
-                <Route path="/admin/ordenes" element={<Ordens/>}/>
+                <Route path="/admin/ordens" element={<Ordens/>}/>
                 <Route path="/admin/pedidos" element={<Pedidos/>}/>
-                <Route path="/admin/aceptados" element={<Aceptados/>}/>
+                <Route path="/admin/pedidos/aceptados" element={<Aceptados/>}/>
                 <Route path="/admin/aceptados/graficos" element={<Graficos/>}/>
                 <Route
                 path="*"

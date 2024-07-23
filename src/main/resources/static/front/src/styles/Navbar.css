@@ -1,3 +1,56 @@
-.navbarvdos{
-    height:100px;
+nav {
+    background-color: #333; /* Color de fondo de la barra de navegación */
+    color: #fff; /* Color del texto de la barra de navegación */
+    padding: 10px 0; /* Espacio alrededor del contenido */
+  }
+  
+  ul {
+    display: flex; /* Mostrar elementos de la lista como fila flexible */
+    list-style: none; /* Eliminar viñetas predeterminadas */
+    margin: 0; /* Eliminar márgenes predeterminados */
+    padding: 0; /* Eliminar relleno predeterminado */
+  }
+  
+  li {
+    flex: 1; /* Distribuir espacio equitativamente entre elementos */
+    text-align: center; /* Alinear texto al centro */
+  }
+  
+  li a {
+    display: block; /* Ocupar todo el ancho del elemento */
+    color: inherit; /* Usar el mismo color de texto que la barra de navegación */
+    text-decoration: none; /* Eliminar subrayado predeterminado */
+    padding: 10px 15px; /* Espacio alrededor del texto del enlace */
+  }
+  
+  /* Estilos adicionales para el menú desplegable (si se desea): */
+  .dropdown {
+    position: relative; /* Posicionar el elemento padre */
+  }
+  
+  .dropdown-content {
+    display: none; /* Ocultar el contenido del menú desplegable por defecto */
+    position: absolute; /* Posicionar el contenido del menú desplegable de forma absoluta */
+    background-color: #f9f9f9; /* Color de fondo del contenido del menú desplegable */
+    min-width: 160px; /* Ancho mínimo del contenido del menú desplegable */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra para el contenido del menú desplegable */
+    z-index: 1; /* Posicionarlo sobre otros elementos */
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block; /* Mostrar el contenido del menú desplegable al pasar el cursor */
+  }
+.rigth{
+  text-align: right;
 }
+@media (max-width: 768px) { /* Aplicar estilos para pantallas de hasta 768px */
+    ul {
+      flex-direction: column; /* Mostrar elementos de la lista como columna */
+      text-align: left; /* Alinear texto a la izquierda */
+      margin-top: 0; /* Eliminar margen superior */
+    }
+  
+    li {
+      flex: 0; /* Eliminar distribución equitativa de espacio */
+    }
+  }
