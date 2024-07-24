@@ -14,11 +14,11 @@ import { Productos,ordenes } from "../types/types";
 
 
 const Pedidos = () => {
-    const { getData } = useFetch();
+    const { getData ,postOrdenes} = useFetch();
     const [ordenes, setOrdenes] = useState<ordenes[]>([]);
     const [ordene, setOrdene] = useState<ordenes>();
     const [id_orden, setId_orden] = useState<number>(0);
-    const [isOpen, setIsOpen] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
   
     const [productos,setProductos] = useState<Productos[]>([])
     const getDatas = async () => {
@@ -34,7 +34,8 @@ const Pedidos = () => {
   
     const seePedido = (id: number) => {
       setId_orden(id);
-      setIsOpen(false);
+      setIsOpen(true);
+      console.log('isO', isOpen)
     };
     const aceptPediddobtn = (orden: ordenes) => {
       setOrdene(orden)
@@ -43,7 +44,7 @@ const Pedidos = () => {
           const res = await getData(`api/allordenes/${orden.id_orden}`);
           setProductos(res?.data)
           console.log('productos', productos)
-          //await postOrdenes({}, `api/ordenes/aceptados/${orden.id_orden}`);
+          await postOrdenes({}, `api/ordenes/aceptados/${orden.id_orden}`);
         } catch (error) {
             console.error(error);
             
@@ -79,11 +80,11 @@ const Pedidos = () => {
   ${productosStr}\n
   gracias por comprar
     `;
-           `https://api.whatsapp.com/send?phone=${formattedPhoneNumber}&text=${encodeURIComponent(
+    const whatsappLink =    `https://api.whatsapp.com/send?phone=${formattedPhoneNumber}&text=${encodeURIComponent(
             mensaje
           )}`;
-         // await postOrdenes({}, `api/ordenes/aceptados/${orden.id_orden}`);
-         // window.open(whatsappLink, "_blank");
+         await postOrdenes({}, `api/ordenes/aceptados/${orden.id_orden}`);
+         window.open(whatsappLink, "_blank");
         } catch (error) {
           console.log("error", error);
         }
@@ -94,9 +95,7 @@ const Pedidos = () => {
       }, 500);
       postAceptar();
     };
-    useEffect(()=>{
-  console.log('productos', productos)
-    },[productos])
+
     const componentRef = useRef<HTMLDivElement | null>(null);
     const handlePrint = useReactToPrint({content: () => componentRef.current});
     
@@ -108,7 +107,7 @@ const Pedidos = () => {
         <Modal
           isOpen={isOpen}
           id_orden={id_orden}
-          clouseModal={() => setIsOpen(true)}
+          clouseModal={() => setIsOpen(false)}
         ></Modal>
         <h1>pedidos</h1>
   

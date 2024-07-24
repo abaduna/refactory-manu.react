@@ -44,3 +44,8 @@ export interface Productos {
   name:string
   price:string
 }
+
+export interface carrito {
+  name:string
+  price:number
+}

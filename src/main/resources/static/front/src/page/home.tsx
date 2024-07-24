@@ -8,6 +8,7 @@ import { useFetch } from "../hock/useFetch";
 import ComponetFood from "../componets/ComponetFood";
 import "../styles/Home.css";
 import NavbarLogin from "../componets/NavbarLogin";
+import { Button } from "react-bootstrap";
 
 function App() {
   const [serch, setSerch] = useState<string>("");
@@ -43,8 +44,7 @@ function App() {
     setShow(true);
     setEndpoint(`api/food/serch/${serch}`);
   };
-  useEffect(() => {
-    const sendCategory = async () => {
+  const sendCategory = async () => {
       const bottle = await getData("api/food");
       if (typeof bottle !== "undefined") {
         setBottle(bottle.data);
@@ -53,6 +53,8 @@ function App() {
         console.log(`undefind`);
       }
     };
+  useEffect(() => {
+    
     sendCategory();
   }, []);
   const removeProduct = (product: Menu) => {
@@ -78,9 +80,10 @@ function App() {
         </div>
       </form>
 
-      <ComponetCarrito carrito={carrito} />
+      <ComponetCarrito carrito={carrito} setCarrito={setCarrito}/>
       {show ? (
         <>
+        <Button onClick={()=>setShow(!show)}>Cancerlar busqueda</Button>
           <div className="fooditem">
             {foods.length > 0 &&
               foods?.map((food) => (

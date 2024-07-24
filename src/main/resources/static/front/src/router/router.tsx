@@ -11,6 +11,8 @@ import Pedidos from "../page/Pedidos";
 import Aceptados from "../page/Aceptados";
 import Login from "../page/Login";
 import Graficos from "../page/Graficos";
+import FormularioAdmin from "../componets/FormularioAdmin";
+import FormAdmin from "../page/Formulario";
 
   const RoutesPrincial =()=>{
     return(
@@ -19,6 +21,7 @@ import Graficos from "../page/Graficos";
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/admin" element={<Admin/>}/>
+                <Route path="/admin/formulario/:id" element={<FormAdmin/>}/>
                 <Route path="/admin/ordens" element={<Ordens/>}/>
                 <Route path="/admin/pedidos" element={<Pedidos/>}/>
                 <Route path="/admin/pedidos/aceptados" element={<Aceptados/>}/>

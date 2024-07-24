@@ -34,12 +34,17 @@
     font-weight: bold;
   }
   .modal{
-    position: fixed;
-    
-    width: 90%;
-    height: 100vh;
-    z-index: 10;
-    background-color: rgb(236, 236, 236);
+    position: fixed; /* Use fixed positioning for a truly centered modal */
+    top: 50%; /* Set top to 50% */
+    left: 50%; /* Set left to 50% */
+    transform: translate(-50%, -50%); /* Center the modal horizontally and vertically */
+    width: 600px; /* Adjust width as needed */
+    height: 600px; /* Adjust height as needed */
+    z-index: 100; /* Ensure modal is above other elements */
+    background-color: rgba(236, 236, 236, 0.651);
+    display: flex; /* Use flexbox for centering content within the modal */
+    flex-direction: row; /* Arrange content vertically */
+    align-items: center; /* Center content horizontally */
     
   }
   .finish{

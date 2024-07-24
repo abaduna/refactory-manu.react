@@ -1,2 +1,10 @@
-poner un cancelar en home
+poner un cancelar buysquedad en home
 agregar un nombre para los pedidos
+agregar descripcion en el food
+Arqueo de caja
+*Controlá todos los ingresos y egresos de caja.
+-Descuentos
+ticket para las mesas(importante)
+hacer que en pedidos historial solo muestre los ultimos 20 
+hacer una paginacion en pediso aceptados
+agregar una lista con las ciudades de la region

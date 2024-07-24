@@ -12,7 +12,7 @@ interface pedidos {
 }
 const Modal = ({
   isOpen,
-
+  clouseModal,
   id_orden,
 }: {
   isOpen: boolean;
@@ -31,39 +31,39 @@ const Modal = ({
     };
     data();
   }, [id_orden]);
-  console.log("id_orden", id_orden);
-  if (isOpen) {
-    return;
-  }
+
+
 
   return (
-    <div className="modal">
-      <div className="container">
-    {/* <FontAwesomeIcon
-          icon={faXmark}
-          onClick={clouseModal}
-          className={styles.btnClose}
-        /> */}
-        <table className="table" >
-        <thead className="white">
-          <tr>
-            <th scope="col">Producto</th>
-            <th scope="col">Precio</th>
-          </tr>
-        </thead>
-        <tbody className="white">
-          {ordenes.length > 0 &&
-            ordenes.map((ordenes) => (
-              <tr key={ordenes.id}>
-                <td>{ordenes.name}</td>
-                <td>{ordenes.price}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      </div>
-      
-    </div>
+    <>
+{isOpen&&<div className="modal">
+          <div className="container">
+           <button className="btn button" onClick={clouseModal}>X</button>
+            <table className="table">
+              <thead className="white">
+                <tr>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Precio</th>
+                </tr>
+              </thead>
+              <tbody className="white">
+                {ordenes.length > 0 &&
+                  ordenes.map((orden) => (
+                    <tr key={orden.id}>
+                      <td>{orden.name}</td>
+                      <td>{orden.price}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </div>}
+        
+
+        
+
+    </>
+    
   );
 };
 

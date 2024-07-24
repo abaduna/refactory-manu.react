@@ -1,10 +1,7 @@
-
-
-
-
 import React, { useState } from "react";
-import  "../styles/ComponentAdminFood.css"
+import "../styles/ComponentAdminFood.css";
 import { useFetch } from "../hock/useFetch";
+
 function ComponentAdminFood({
   name,
   price,
@@ -14,7 +11,7 @@ function ComponentAdminFood({
   updata,
   category,
   stock,
-  description
+  description,
 }: any) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { deletID } = useFetch();
@@ -34,26 +31,35 @@ function ComponentAdminFood({
       setSuccessful(false);
     }, 500);
   };
+  console.log('id', id)
   return (
     <>
       {successful && <span>Eliminado con exito</span>}
       <div className="fooditem">
-        <form onSubmit={(e) => handleDeleteClick(e, id as string)} className="formularinputFood">
-        <h1>{name}</h1>
-        <p>
-          {price}-{category}<br/>
-          Stock:{stock}<br/>
-          {description}
-        </p>
-        <img src={link_img} />
-        <div className="btndeletdform">
-         <button  className="btndelet" type="submit">Eliminar</button> 
-        </div>
-        
-        {/* <Link  className="link" hrtoef={`/admin/formulario/${id}`}>Actualizar</Link> */}
-      </form>
+        <form
+          onSubmit={(e) => handleDeleteClick(e, id as string)}
+          className="formularinputFood"
+        >
+          <h1>{name}</h1>
+          <p>
+            {price}-{category}
+            <br />
+            Stock:{stock}
+            <br />
+            {description}
+          </p>
+          <img src={link_img} />
+          <div className="btndeletdform">
+            <button className="btndelet" type="submit">
+              Eliminar
+            </button>
+          </div>
+
+          <a className="link" href={`admin/formulario/${id}`}>
+            actualizar
+          </a>
+        </form>
       </div>
-      
     </>
   );
 }

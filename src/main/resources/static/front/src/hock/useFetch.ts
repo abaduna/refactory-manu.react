@@ -38,6 +38,7 @@ export const useFetch = () => {
   };
   const getDataForid = async (id: string) => {
     try {
+      console.error('id', id)
       const data = await API.get(`api/food/${id}`);
       console.log(data);
       
