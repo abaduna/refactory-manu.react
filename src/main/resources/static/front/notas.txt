@@ -1,10 +1,11 @@
-poner un cancelar buysquedad en home
-agregar un nombre para los pedidos
-agregar descripcion en el food
+
 Arqueo de caja
 *Controlá todos los ingresos y egresos de caja.
 -Descuentos
-ticket para las mesas(importante)
-hacer que en pedidos historial solo muestre los ultimos 20 
-hacer una paginacion en pediso aceptados
-agregar una lista con las ciudades de la region
+
+hacer que en pedidos historial solo muestre los ultimos 20 check
+
+agregar una lista con las ciudades de la region check
+hay que poner el nombre en la impresion el ticket check
+en admin por un card de productos 
+que no se pueden mandar  pedidos vacios check

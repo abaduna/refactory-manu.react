@@ -14,6 +14,7 @@ export interface Menu {
     updata?: boolean;
     setUpdate?: any;
     stock: string;
+    description:string
     fetchFoodsData?: () => Promise<void>;
   }
   export interface foodsPedidos {
@@ -30,6 +31,9 @@ export interface Menu {
     estados: string;
     phone:number
     address:string
+    provincia:string
+    city:string
+    people:string
   }
   export interface pedidos {
     id: number;

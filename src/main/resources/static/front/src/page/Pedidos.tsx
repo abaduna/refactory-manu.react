@@ -12,6 +12,8 @@ import Print from "../componets/print";
 import { useFetch } from "../hock/useFetch";
 import { Productos,ordenes } from "../types/types";
 
+import { useNavigate } from "react-router-dom";
+
 
 const Pedidos = () => {
     const { getData ,postOrdenes} = useFetch();
@@ -19,17 +21,21 @@ const Pedidos = () => {
     const [ordene, setOrdene] = useState<ordenes>();
     const [id_orden, setId_orden] = useState<number>(0);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-  
+    const navigate = useNavigate();
     const [productos,setProductos] = useState<Productos[]>([])
     const getDatas = async () => {
       const res = await getData(`api/ordenes`);
       if (res) {
         setOrdenes(res.data);
+        console.log('res', res)
         console.log('ordenes', ordenes)
       }
     };
     useEffect(() => {
       getDatas();
+      if (!localStorage.getItem("token")) {
+        navigate('/login');
+      }
     }, []);
   
     const seePedido = (id: number) => {

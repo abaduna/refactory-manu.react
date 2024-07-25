@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "./../styles/ordens.css";
 import { useFetch } from '../hock/useFetch';
 import { foodsPedidos } from '../types/types';
+import { Button } from "react-bootstrap";
+
+import { useNavigate } from "react-router-dom";
 
 interface ordenes {
     name: string;
@@ -15,7 +18,7 @@ const Ordens = () => {
     const [add, setAdd] = useState<boolean>(false);
     const [serch, setSerch] = useState<string>("api/food");
     const { getData, postOrdenes } = useFetch();
-  
+    const navigate = useNavigate();
     useEffect(() => {
       const getDatas = async () => {
         if (serch !== "api/food") {
@@ -26,6 +29,10 @@ const Ordens = () => {
           setFoods(res?.data);
         }
       };
+      
+      if (!localStorage.getItem("token")) {
+        navigate('/login');
+      }
       getDatas();
     }, [serch]);
     const agregarPedido = () => {
@@ -80,16 +87,17 @@ const Ordens = () => {
     useEffect(() => {}, []);
     return (
       <>
-        <form className="form">
+        <form className="form" onSubmit={agregarPedido}>
           <input
             type="text"
             placeholder="mesa"
             onChange={(e) => settable(+e.target.value)}
             className="inputTxt"
+            required
           />
-          <button type="button" onClick={agregarPedido} className="button">
+          <Button  className="button ">
             Agregar pedido
-          </button>
+          </Button>
           {mesage && (
             <div className="alert alert-warning">
               Agregado

@@ -1,4 +1,5 @@
 import { API } from "../Api";
+import { bodyProps } from "../types/types";
 
 export const useFetch = () => {
   const fetchPost = async (datos: bodyProps) => {
@@ -8,7 +9,7 @@ export const useFetch = () => {
       formData.append("name", datos.title);
       formData.append("price", datos.price);
       formData.append("stock", datos.stock);
-      formData.append("description", "description");
+      formData.append("description", datos.description);
       formData.append("file", datos.imageUpLoading);
       formData.append("category", "perfumes");
       await API.post("api/food", formData, {

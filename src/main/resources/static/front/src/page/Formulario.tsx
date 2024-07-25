@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import  "./../styles/FormAdmin.css";
 import { useFetch } from "../hock/useFetch";
+import { Verificar } from "../utils/verificacion";
 
 export interface food {
   id?: string;
@@ -19,9 +20,10 @@ const FormAdmin = () => {
   const [description, setDescription] = useState<string>("");
   const [stock, setStock] = useState<number>(0);
   const { id } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
-    const verificar = () => {};
-    verificar();
+
+    Verificar();
     const fetchFoodData = async () => {
       if (id) {
         const response = await getDataForid(id);
@@ -33,7 +35,9 @@ const FormAdmin = () => {
         }
       }
     };
-
+    if (!localStorage.getItem("token")) {
+      navigate('/login');
+    }
     fetchFoodData();
   }, []);
   const updateform = (e: React.FormEvent<HTMLFormElement>) => {

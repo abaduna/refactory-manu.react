@@ -14,6 +14,7 @@ interface FormProps {
 function FormularioAdmin({ setUpdate, updata }: FormProps) {
   const [title, setTitle] = useState<string>("");
   const [price, setPrice] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [stock, setStock] = useState<string>("");
   const [imageUpLoading, setImageUpLoading] = useState<File | string>("");
   const [message, setMessage] = useState<boolean>(false);
@@ -25,6 +26,7 @@ function FormularioAdmin({ setUpdate, updata }: FormProps) {
       price,
       imageUpLoading,
       stock,
+      description
     };
     fetchPost(data);
 
@@ -70,6 +72,14 @@ function FormularioAdmin({ setUpdate, updata }: FormProps) {
             value={stock}
             onChange={(e) => setStock(e.target.value)}
             name="price"
+            required
+          />
+          <label>Descripcioon:</label>
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+
             required
           />
         </div>

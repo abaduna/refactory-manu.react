@@ -8,8 +8,9 @@ const ComponetFood = ({
   price,
   link_img,
   category,
-  setCarrito = any,
-  removeProduct = any,
+  setCarrito,
+  description,
+  removeProduct,
 }: Menu) => {
   const product = {
     name,
@@ -23,7 +24,8 @@ const ComponetFood = ({
       <Card.Body>
         <Card.Title>{name} </Card.Title>
         <Card.Text>
-        <span className="price">{price}$</span>
+        <span className="price">{price}$</span><br/>
+        <span >{description}$</span>
         </Card.Text>
         <button
             onClick={() => setCarrito((prev) => [...prev, product])}

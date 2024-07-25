@@ -20,14 +20,21 @@
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
+    text-align: center;
+    
     cursor: pointer;
     transition: background-color 0.3s;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    text-overflow: ellipsis; /* Añade puntos suspensivos (...) si el texto es demasiado largo */
+    display: inline-block; /* Asegura que el botón sea lo suficientemente ancho para su contenido */
   }
   
   .button:hover {
     background-color: #005bb5;
   }
   .button:active  {
+    transition: background-color 1.3s;
     background-color: #d9ff00;
   }
   .foodItem {

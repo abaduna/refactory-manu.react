@@ -22,8 +22,9 @@ useEffect(()=>{
 },[productos])
     return (
       <div ref={ref} className="print" >
-        
+        nombre:  {ordenes.people}<br/>
       mesa:  {ordenes.tableNumber}<br/>
+      provincia:  {ordenes.provincia} en la ciudad {ordenes.city}<br/>
       direcion:{ordenes.address}
       <hr></hr>
         {productos.length > 0 && productos.map(producto=>(

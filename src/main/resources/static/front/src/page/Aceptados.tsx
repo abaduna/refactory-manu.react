@@ -17,7 +17,6 @@ function Aceptados() {
   useEffect(() => {
     const getDatos = async () => {
       if (dateSerch !== "null") {
-        console.error("ejecutado");
 
         const res = await getData(`api/ordenes/aceptados/serch/${dateSerch}`);
         serOrdenes(res?.data);
