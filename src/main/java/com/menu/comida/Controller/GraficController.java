@@ -24,4 +24,8 @@ public class GraficController {
     public HashMap<String, Integer> getAmount(@RequestParam String start, @RequestParam String end){
         return  graficService.getAmount(start,end);
     }
+    @GetMapping("api/total")
+    public Integer getTotal(@RequestParam String start, @RequestParam String end){
+        return  graficService.getTotal(start,end);
+    }
 }

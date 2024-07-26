@@ -38,12 +38,16 @@ public class FooodAccessFilter implements Filter{
         String currentUrl = request.getRequestURI();//obtiene la url
         String[] availableUrl = new String[] {
                 "/api/auth/login",
-                "/api/auth/Create"
+                "/api/auth/Create",
+                "/api/ordenes"
+
         };
 
         boolean authorized = Arrays.asList(availableUrl).contains(currentUrl);
-        boolean isApiResource = currentUrl.startsWith("/api/"); //devuelva true si empieza con la ruta"api/
-        if (authorized || !isApiResource) {
+        boolean isApiResource = currentUrl.startsWith("/api/"); //devuelva true si empieza con la ruta"api
+        boolean isStart = currentUrl.startsWith("/api/food");
+
+        if (authorized || !isApiResource || isStart) {
             return true;
         }
 

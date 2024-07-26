@@ -27,7 +27,10 @@ public class FoodController {
     public List<Food> get(){
        return foodservices.get();
     }
-
+    @GetMapping("api/food/stock")
+    public List<Food> getStack(){
+        return foodservices.getStock();
+    }
     @GetMapping("api/food/serch/{serch}")
     public List<Food> get(@PathVariable String serch){
         return foodservices.getSerch(serch);
@@ -35,6 +38,11 @@ public class FoodController {
     @DeleteMapping("api/food/{id}")
     public String removeCustomers(@PathVariable String id){
        return foodservices.deleted(id);
+    }
+
+    @GetMapping("api/food/{id}")
+    public Food GetCustomers(@PathVariable String id){
+        return foodservices.getByid(id);
     }
 
     @PutMapping("api/food/{id}")

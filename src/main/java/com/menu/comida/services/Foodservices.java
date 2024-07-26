@@ -16,4 +16,5 @@ public interface Foodservices {
      String uploadFile(MultipartFile file, String category,String name,  String description, String price,Integer stock);
      String updateStock(String id,Integer stock);
      List<Food> getSerch(String serch);
+     List<Food> getStock();
 }

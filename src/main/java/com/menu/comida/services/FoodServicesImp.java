@@ -2,18 +2,14 @@ package com.menu.comida.services;
 
 import com.menu.comida.Repository.FoodRepository;
 import com.menu.comida.models.Food;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.BitSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -23,10 +19,13 @@ public class FoodServicesImp implements Foodservices{
 
     @Autowired
     private FoodRepository repository;
-
-
     @Override
     public List<Food> get() {
+        return repository.findByStack();
+    }
+
+    @Override
+    public List<Food> getStock() {
         return repository.findAll();
     }
 
@@ -52,7 +51,6 @@ public class FoodServicesImp implements Foodservices{
         }
 
     }
-
 
 
     @Override

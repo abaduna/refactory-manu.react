@@ -30,4 +30,11 @@ public class PutchaseDTO {
     private  Long phone;
 
     private  String address;
+
+    private String people;
+
+    private String provincia;
+
+
+    private String city;
 }

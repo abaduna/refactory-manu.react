@@ -8,6 +8,9 @@ import com.menu.comida.models.Food;
 import com.menu.comida.models.Ordenes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 
 
 import java.util.List;
@@ -28,8 +31,8 @@ public class PurchaseServiceImp implements PurchaseService{
         return purchaseRepository.findByestadoPedidos();
     }
     public List<Ordenes> getAceptados() {
-
-        return purchaseRepository.findByestadoAceptados();
+        Pageable pageable = PageRequest.of(0, 50);
+        return purchaseRepository.findByestadoAceptados(pageable);
     }
 
     @Override
@@ -138,11 +141,14 @@ public class PurchaseServiceImp implements PurchaseService{
             Ordenes ord1 = new Ordenes();
             ord1.setDateTime(ordenes.getDateTime());
             ord1.setPhone(ordenes.getPhone());
+            ord1.setPeople(ordenes.getPeople());
             long id_orden = purchaseRepository.getid() + 1;
             ord1.setId_orden(id_orden);
             ord1.setTableNumber(ordenes.getTable());
             ord1.setEstados(ordenes.getEstados());
             ord1.setAddress(ordenes.getAddress());
+            ord1.setProvincia(ordenes.getProvincia());
+            ord1.setCity(ordenes.getCity());
             ordenes.getOrdenes().forEach(orden -> {
                 System.out.println(orden);
                 All_ordenes all_ordenes = new All_ordenes();

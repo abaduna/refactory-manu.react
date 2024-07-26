@@ -69,4 +69,17 @@ public class GraficImp implements GraficService {
         }
         return foodCountMap;
     }
+
+    @Override
+    public Integer getTotal(String start, String end) {
+        Integer contador = 0;
+        List<Ordenes> pedisdos = graficRepository.findByMonth(start,end);
+        for (Ordenes item : pedisdos) {
+            List<All_ordenes> productos = all_ordenesRepository.getAllOrdenes(item.getId_orden());
+            for(All_ordenes pedido: productos){
+                contador = contador + Integer.valueOf(pedido.getPrice());
+            }
+        }
+        return contador;
+    }
 }

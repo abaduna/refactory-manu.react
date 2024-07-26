@@ -12,4 +12,9 @@ public interface FoodRepository extends  JpaRepository<Food, Long> {
 
     @Query("SELECT c FROM Food c WHERE c.name LIKE %:search%")
     List<Food> findByName(@Param("search") String search);
+
+    @Query("SELECT c FROM Food c WHERE c.stock != 0 ")
+    List<Food> findByStack();
+
+
 }

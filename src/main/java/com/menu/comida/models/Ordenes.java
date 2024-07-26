@@ -31,7 +31,17 @@ public class Ordenes {
     private String estados;
 
     @Column(name ="phone")
+
     private Long phone;
     @Column(name ="address")
     private String address;
+
+    @Column(name ="provincia")
+    private String provincia;
+
+    @Column(name ="city")
+    private String city;
+
+    @Column(name ="people")
+    private String people;
 }
