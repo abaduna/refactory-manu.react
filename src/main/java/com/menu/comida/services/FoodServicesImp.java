@@ -4,7 +4,10 @@ import com.menu.comida.Repository.FoodRepository;
 import com.menu.comida.models.Food;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.File;
 import java.nio.file.Files;
@@ -19,6 +22,16 @@ public class FoodServicesImp implements Foodservices{
 
     @Autowired
     private FoodRepository repository;
+
+
+    private  ApplicationEventPublisher eventPublisher;
+
+    @Autowired
+    public void ImageUploadController(ApplicationEventPublisher eventPublisher) {
+        this.eventPublisher = eventPublisher;
+    }
+
+
     @Override
     public List<Food> get() {
         return repository.findByStack();
@@ -95,6 +108,9 @@ public class FoodServicesImp implements Foodservices{
             food.setLink_img("http://localhost:8080/picture/" + newFileName);
             Files.write(path,bytes);
             repository.save(food);
+
+
+
             return  "successfully post";
         }catch (Exception  e){
 
