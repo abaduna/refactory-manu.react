@@ -10,9 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.File;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -23,7 +25,7 @@ public class FoodServicesImp implements Foodservices{
     @Autowired
     private FoodRepository repository;
 
-
+    private final Path root = Paths.get("src/main/resources/picture");
     private  ApplicationEventPublisher eventPublisher;
 
     @Autowired
@@ -78,7 +80,12 @@ public class FoodServicesImp implements Foodservices{
             return "Error";
         }
     }
-    private final String UPLOAD_DIR = "src/main/resources/picture";
+    private static final SecureRandom secureRandom = new SecureRandom();
+
+    public static BigInteger generateRandomBigInteger(int numBits) {
+        return new BigInteger(numBits, secureRandom);
+    }
+    private final String UPLOAD_DIR = "src/main/resources/static/path/to/images";
     @Override
     public String  uploadFile(MultipartFile file,String category,String name,  String description, String price,Integer stock) {
         Food food = new Food();
@@ -88,25 +95,11 @@ public class FoodServicesImp implements Foodservices{
         food.setPrice(Integer.valueOf(price));
         food.setStock(stock);
         try {
-            String fileName = UUID.randomUUID().toString();
-            byte[] bytes = file.getBytes();
-            String fileOriginalName = file.getOriginalFilename();
+            BigInteger randomBigInteger = generateRandomBigInteger(50);
+            String filename =randomBigInteger+ file.getOriginalFilename() ;
+            Files.copy(file.getInputStream(), this.root.resolve(filename));
 
-
-            long maxFileSize = 50*1024*1024;
-
-            if (!fileOriginalName.endsWith(".jpg") &&!fileOriginalName.endsWith(".png") && !fileOriginalName.endsWith(".jpeg")) {
-                return "only jpg,jpeg y png files are alloerd";
-            }
-            String fileExtension = fileOriginalName.substring(fileOriginalName.lastIndexOf("."));
-            String newFileName = fileName + fileExtension;
-            File folder = new File("src/main/resources/picture");
-            if (!folder.exists()) {
-                folder.mkdirs();
-            }
-            Path path = Paths.get("src/main/resources/static/picture/"+ newFileName);
-            food.setLink_img("http://localhost:8080/picture/" + newFileName);
-            Files.write(path,bytes);
+            food.setLink_img(filename);
             repository.save(food);
 
 

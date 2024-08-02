@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 @Component
-public class FooodAccessFilter implements Filter{
+public  class FooodAccessFilter implements Filter{
     public void CustomAccessFilter() {
     }
 
@@ -23,8 +23,8 @@ public class FooodAccessFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         boolean authorized = isAuthorized(request);
-        System.out.println("req" +request);
-        System.out.println("authorized " +authorized);
+
+        System.out.println("authorized " + authorized);
         if (authorized) {
             SecurityContextHolder.getContext().setAuthentication(
                     new UsernamePasswordAuthenticationToken(null, null, Collections.emptyList()));
@@ -35,28 +35,36 @@ public class FooodAccessFilter implements Filter{
     }
 
     private boolean isAuthorized(HttpServletRequest request) {
-        String currentUrl = request.getRequestURI();//obtiene la url
-        String[] availableUrl = new String[] {
+        String currentUrl = request.getRequestURI(); // obtiene la URL
+        String[] availableUrls = {
                 "/api/auth/login",
-                "/api/auth/Create",
+                "/api/auth/create",
                 "/api/ordenes"
-
         };
 
-        boolean authorized = Arrays.asList(availableUrl).contains(currentUrl);
-        boolean isApiResource = currentUrl.startsWith("/api/"); //devuelva true si empieza con la ruta"api
+        boolean authorized = Arrays.asList(availableUrls).contains(currentUrl);
+        boolean isApiResource = currentUrl.startsWith("/api"); // devuelve true si empieza con la ruta "api"
         boolean isStart = currentUrl.startsWith("/api/food");
+        boolean isImg = currentUrl.startsWith("/api/food/image");
 
-        if (authorized || !isApiResource || isStart) {
+        if (authorized || !isApiResource || isStart || isImg) {
             return true;
         }
 
         try {
             String token = request.getHeader("Authorization");
-            String userId = JDTutils.getIdByToken(token);
-            return true;
+            if (token != null && !token.isEmpty()) {
+                String userId = JDTutils.getIdByToken(token);
+                // Asumiendo que JDTutils.getIdByToken(token) lanza una excepción si el token es inválido
+                return true;
+            } else {
+                return false;
+            }
         } catch(Exception e) {
+            System.out.println(e);
             return false;
         }
     }
+
 }
+
