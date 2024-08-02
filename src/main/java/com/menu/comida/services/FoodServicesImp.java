@@ -99,7 +99,7 @@ public class FoodServicesImp implements Foodservices{
             String filename =randomBigInteger+ file.getOriginalFilename() ;
             Files.copy(file.getInputStream(), this.root.resolve(filename));
 
-            food.setLink_img(filename);
+            food.setLink_img("http://localhost:8080/api/food/image/"+filename);
             repository.save(food);
 
 
